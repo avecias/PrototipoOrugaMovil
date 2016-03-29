@@ -4,8 +4,7 @@ package app.vista.usuario;
 public class IGPrincipal extends javax.swing.JFrame {
 
     public IGPrincipal() {
-        initComponents();
-        
+        initComponents();  
     }
 
     @SuppressWarnings("unchecked")
@@ -14,12 +13,23 @@ public class IGPrincipal extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        menuSalir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuJoystick = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Prototipo de Robot Oruga Movil");
 
         jMenu1.setText("File");
+
+        menuSalir.setText("Salir");
+        menuSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSalirActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuSalir);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Control");
@@ -48,6 +58,7 @@ public class IGPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuJoystickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuJoystickActionPerformed
@@ -55,6 +66,12 @@ public class IGPrincipal extends javax.swing.JFrame {
         Joystick j = new Joystick();
         j.setVisible(true);
     }//GEN-LAST:event_menuJoystickActionPerformed
+
+    private void menuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSalirActionPerformed
+        // Salir de toda la aplicacion
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_menuSalirActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -79,5 +96,6 @@ public class IGPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem menuJoystick;
+    private javax.swing.JMenuItem menuSalir;
     // End of variables declaration//GEN-END:variables
 }
