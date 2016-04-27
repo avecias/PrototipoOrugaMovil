@@ -5,7 +5,7 @@ import java.awt.Color;
 
 public class Joystick extends javax.swing.JFrame {
 
-    private Movimiento movimiento;
+    private final Movimiento movimiento;
     private Integer baudios, bits, paro, parida;
     private String COMM;
 

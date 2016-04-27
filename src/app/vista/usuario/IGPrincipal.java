@@ -1,8 +1,15 @@
 
 package app.vista.usuario;
 
+import app.controlador.control.Archivo;
+import app.controlador.control.Reporte;
+import java.io.File;
+
+
 public class IGPrincipal extends javax.swing.JFrame {
 
+    private File lecturas;
+    
     public IGPrincipal() {
         initComponents();  
     }
@@ -13,6 +20,8 @@ public class IGPrincipal extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        menuAbrir = new javax.swing.JMenuItem();
+        menuReporte = new javax.swing.JMenuItem();
         menuSalir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuJoystick = new javax.swing.JMenuItem();
@@ -20,7 +29,23 @@ public class IGPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Prototipo de Robot Oruga Movil");
 
-        jMenu1.setText("File");
+        jMenu1.setText("Archivo");
+
+        menuAbrir.setText("Abrir");
+        menuAbrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAbrirActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuAbrir);
+
+        menuReporte.setText("Generar Reporte");
+        menuReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuReporteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuReporte);
 
         menuSalir.setText("Salir");
         menuSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +98,16 @@ public class IGPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_menuSalirActionPerformed
 
+    private void menuAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAbrirActionPerformed
+        // TODO add your handling code here:
+        lecturas = Archivo.leer();
+    }//GEN-LAST:event_menuAbrirActionPerformed
+
+    private void menuReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReporteActionPerformed
+        // TODO add your handling code here:
+        Reporte.generar(lecturas);
+    }//GEN-LAST:event_menuReporteActionPerformed
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -95,7 +130,9 @@ public class IGPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem menuAbrir;
     private javax.swing.JMenuItem menuJoystick;
+    private javax.swing.JMenuItem menuReporte;
     private javax.swing.JMenuItem menuSalir;
     // End of variables declaration//GEN-END:variables
 }
