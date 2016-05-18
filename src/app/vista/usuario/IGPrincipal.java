@@ -1,14 +1,14 @@
 
 package app.vista.usuario;
 
-import app.controlador.control.Archivo;
+import app.controlador.control.ArchivoIO;
 import app.controlador.control.Reporte;
-import java.io.File;
+import app.modelo.comunicacion.SD.Archivo;
 
 
 public class IGPrincipal extends javax.swing.JFrame {
 
-    private File lecturas;
+    private Archivo lecturas;
     
     public IGPrincipal() {
         initComponents();  
@@ -100,7 +100,7 @@ public class IGPrincipal extends javax.swing.JFrame {
 
     private void menuAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAbrirActionPerformed
         // TODO add your handling code here:
-        lecturas = Archivo.leer();
+        lecturas = ArchivoIO.leer();
     }//GEN-LAST:event_menuAbrirActionPerformed
 
     private void menuReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReporteActionPerformed

@@ -1,13 +1,13 @@
 
 package app.controlador.control;
 
+import app.modelo.comunicacion.SD.Archivo;
 import app.vista.dial.Dial1;
 import app.vista.dial.Grafica;
-import java.io.File;
 
 public class Reporte {
 
-    public static void generar(File lecturas) {
+    public static void generar(Archivo lecturas) {
         mostrarGraficas();
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
