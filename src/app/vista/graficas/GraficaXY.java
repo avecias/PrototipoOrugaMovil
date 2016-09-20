@@ -34,7 +34,7 @@ public class GraficaXY extends ApplicationFrame {
         dataset.addSeries(s3);
         dataset.addSeries(s4);
         final JFreeChart chart = ChartFactory.createXYLineChart(
-                "Log Axis Demo", // chart title
+                "Prueba de Robot Movil", // chart title
                 "Category", // domain axis label
                 "Value", // range axis label
                 dataset, // data

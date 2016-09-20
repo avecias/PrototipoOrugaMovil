@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.regex.PatternSyntaxException;
 import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.JOptionPane;
 
 public class ArchivoIO {
 
@@ -24,8 +24,13 @@ public class ArchivoIO {
         if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             construir(archivo, file);
+            JOptionPane.showMessageDialog(null, "Archivo cargado con exito");
+            return archivo;
         }
-        return archivo;
+        else{
+            JOptionPane.showMessageDialog(null, "No se selecciono ningun archivo");
+            return null;
+        }
     }
 
     private static void construir(Archivo archivo, File file) {
