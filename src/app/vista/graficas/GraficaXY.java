@@ -1,7 +1,6 @@
 package app.vista.graficas;
 
-import app.modelo.comunicacion.SD.Archivo;
-import app.modelo.comunicacion.SD.Lectura;
+
 import java.awt.Color;
 import java.util.ArrayList;
 import org.jfree.chart.ChartFactory;
@@ -27,45 +26,48 @@ public class GraficaXY extends ApplicationFrame {
         super(title);
     }
 
-    public void mostrar(Archivo archivo) {
-        llenar(archivo);
-        dataset.addSeries(s1);
-        dataset.addSeries(s2);
-        dataset.addSeries(s3);
-        dataset.addSeries(s4);
-        final JFreeChart chart = ChartFactory.createXYLineChart(
-                "Prueba de Robot Movil", // chart title
-                "Category", // domain axis label
-                "Value", // range axis label
-                dataset, // data
-                PlotOrientation.VERTICAL,
-                true, // include legend
-                true,
-                false
-        );
-        final XYPlot plot = chart.getXYPlot();
-        plot.setDomainAxis( new NumberAxis("muestras"));
-        plot.setRangeAxis(new NumberAxis("valor"));
-        chart.setBackgroundPaint(Color.white);
-        plot.setOutlinePaint(Color.black);
-        final ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new java.awt.Dimension(500, 270));
-        setContentPane(chartPanel);
-        setVisible(true);
-        setLocationRelativeTo(null);
-        pack();
-    }
-
-    private void llenar(Archivo archivo) {
-        ArrayList<ArrayList<Lectura>> listaLecturas = archivo.getLecturas();
-        ArrayList<Lectura> lecturas = listaLecturas.get(0);
-        for (int i = 0; i < lecturas.size(); i++) {
-            Lectura lectura = lecturas.get(i);
-            s1.add(i, lectura.getSensor1());
-            s2.add(i, lectura.getSensor2());
-            s3.add(i, lectura.getSensor3());
-            s4.add(i, lectura.getSensor4());
-            enconder.add(i, lectura.getSensor1());
-        }
-    }
+//    public void mostrar(Archivo archivo) {
+//        llenar(archivo);
+//        dataset.addSeries(s1);
+//        dataset.addSeries(s2);
+//        dataset.addSeries(s3);
+//        dataset.addSeries(s4);
+//        final JFreeChart chart = ChartFactory.createXYLineChart(
+//                "Prueba de Robot Movil", // chart title
+//                "Category", // domain axis label
+//                "Value", // range axis label
+//                dataset, // data
+//                PlotOrientation.VERTICAL,
+//                true, // include legend
+//                true,
+//                false
+//        );
+//        final XYPlot plot = chart.getXYPlot();
+//        plot.setDomainAxis( new NumberAxis("muestras"));
+//        plot.setRangeAxis(new NumberAxis("valor"));
+//        chart.setBackgroundPaint(Color.white);
+//        plot.setOutlinePaint(Color.black);
+//        final ChartPanel chartPanel = new ChartPanel(chart);
+//        chartPanel.setPreferredSize(new java.awt.Dimension(500, 270));
+//        setContentPane(chartPanel);
+//        setVisible(true);
+//        setLocationRelativeTo(null);
+//        pack();
+//    }
+//
+//    private void llenar(Archivo archivo) {
+//        ArrayList<ArrayList<Lectura>> listaLecturas = archivo.getLecturas();
+//        ArrayList<Lectura> lecturas = listaLecturas.get(0);
+//        for (int i = 0; i < lecturas.size(); i++) {
+//            Lectura lectura = lecturas.get(i);
+//            s1.add(i, lectura.getSensor1());
+//            s2.add(i, lectura.getSensor2());
+//            s3.add(i, lectura.getSensor3());
+//            s4.add(i, lectura.getSensor4());
+//            enconder.add(i, lectura.getSensor1());
+//        }
+//    }
+    
+//    GraficaXY graficaXY = new GraficaXY("Lecturas de Prueba");
+//        graficaXY.mostrar(lecturas);
 }

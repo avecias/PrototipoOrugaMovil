@@ -1,19 +1,15 @@
 //Ventana Inicial del programa para poder realizar todas las operaciones basicas del software
 package app.vista.usuario;
 
-import app.controlador.control.ArchivoIO;
 import app.controlador.control.CargarArchivo;
-import app.controlador.control.Reporte;
 import app.controlador.control.UsarControl;
 import app.controlador.control.sesion.Sesion;
-import app.modelo.comunicacion.SD.Archivo;
 import javax.swing.ImageIcon;
 
 
 public class IGPrincipal extends javax.swing.JFrame {
 
     private Sesion sesion;
-    private Archivo lecturas;
     
     public IGPrincipal(Sesion sesion) {
         this.sesion = sesion;
@@ -87,6 +83,11 @@ public class IGPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Tabla de archivos cargados en esta sesion");
 
         botonVerGraficas.setText("Ver Graficas");
+        botonVerGraficas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerGraficasActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Archivo");
 
@@ -186,6 +187,10 @@ public class IGPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         CargarArchivo.hacer(sesion, tabla);
     }//GEN-LAST:event_menuAbrirArchivoActionPerformed
+
+    private void botonVerGraficasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerGraficasActionPerformed
+        // Ver en otra venta las graficas del archivo cargado
+    }//GEN-LAST:event_botonVerGraficasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

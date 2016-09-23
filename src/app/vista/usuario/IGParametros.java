@@ -217,7 +217,6 @@ public class IGParametros extends javax.swing.JFrame {
         int paridad = comboParidad.getSelectedIndex();
         Parametro parametro = new Parametro(com, baudios, datos, paro, paridad);
         System.out.println(parametro);
-        sesion.setParametros(parametro);
-        UsarControl.comprobado(sesion, principal,this);
+        UsarControl.conectarYUsar(sesion, parametro, principal);
     }
 }

@@ -9,10 +9,8 @@ import jssc.SerialPortList;
 public class ConexionSerial {
 
     private SerialPort serialPort;
-    private Parametro parametros;
 
-
-    public boolean abrirPuerto() {
+    public boolean abrirPuerto(Parametro parametros) {
         try {
             //Hacer conexion al puerto COM
             serialPort = new SerialPort(parametros.getPuerto());

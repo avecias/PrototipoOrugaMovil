@@ -5,7 +5,7 @@ ademas de solicitarle un nombre especial y agregarle un fecha a cada lectura
 package app.controlador.control;
 
 import app.controlador.control.sesion.Sesion;
-import app.modelo.dao.ArchivoOrugaMovilDAO;
+import app.modelo.comunicacion.convertir.Convertir;
 import app.modelo.entidades.ArchivosCargado;
 import app.modelo.entidades.Lectura;
 import java.io.File;
@@ -26,13 +26,16 @@ public class CargarArchivo {
         if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             JOptionPane.showMessageDialog(null, "Archivo cargado con exito");
+            //Renombrar el archivo
             String reNombre = JOptionPane.showInputDialog("Inserte un nombre al archivo");
             if(reNombre == null){
                 JOptionPane.showMessageDialog(null, "El archivo necesita ser renombrado ", "Ningun Nombre", JOptionPane.ERROR_MESSAGE);
                 return;
             }
+            //Verificar si es un archivo valido para ser leido
+            
             //Convertir el archivo
-            Lectura lectura = new ArchivoOrugaMovilDAO().convertir(file);
+            Lectura lectura = Convertir.aLectura(file);
             Date fecha = new Date(new GregorianCalendar().getTimeInMillis());
             SimpleDateFormat formateador = new SimpleDateFormat("EEEE, dd 'de' MMMM 'de' yyyy 'hora:' hh:mm:ss a", new Locale("ES"));
             //Cargar en la tabla

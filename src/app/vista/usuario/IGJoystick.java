@@ -1,19 +1,19 @@
 package app.vista.usuario;
 
-import app.controlador.control.Movimiento;
+import app.controlador.control.MoverMovil;
 import app.modelo.comunicacion.serial.ConexionSerial;
 import javax.swing.ImageIcon;
 
 public class IGJoystick extends javax.swing.JFrame {
 
-    Movimiento movimiento;
+    MoverMovil moverMovil;
     private IGPrincipal principal;
     
     public IGJoystick(ConexionSerial conexionSerial, IGPrincipal principal) {
         this.principal = principal;
         initComponents();
         setIconImage(new ImageIcon("src/app/imagenes/icono.jpg").getImage());
-        movimiento = new Movimiento();
+        moverMovil = new MoverMovil(conexionSerial);
     }
 
 
@@ -30,7 +30,7 @@ public class IGJoystick extends javax.swing.JFrame {
         botonIzquierdaAtras = new javax.swing.JButton();
         botonGiroIzquierda = new javax.swing.JButton();
         botonGiroDerecha = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        botonConector = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -115,7 +115,7 @@ public class IGJoystick extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Desconectar");
+        botonConector.setText("Desconectar");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Control para la manipulacion inambrica de movil");
@@ -145,7 +145,7 @@ public class IGJoystick extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1)
+                                    .addComponent(botonConector)
                                     .addComponent(botonDetener))))
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -187,7 +187,7 @@ public class IGJoystick extends javax.swing.JFrame {
                         .addContainerGap(22, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(botonConector)
                         .addGap(94, 94, 94))))
         );
 
@@ -201,47 +201,47 @@ public class IGJoystick extends javax.swing.JFrame {
 
     private void botonAdelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAdelanteActionPerformed
         // TODO add your handling code here:
-        movimiento.adelante();
+        moverMovil.adelante();
     }//GEN-LAST:event_botonAdelanteActionPerformed
 
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         // TODO add your handling code here:
-        movimiento.atras();
+        moverMovil.atras();
     }//GEN-LAST:event_botonAtrasActionPerformed
 
     private void botonDerechaAdelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDerechaAdelanteActionPerformed
         // TODO add your handling code here:
-        movimiento.derechaAdelante();
+        moverMovil.derechaAdelante();
     }//GEN-LAST:event_botonDerechaAdelanteActionPerformed
 
     private void botonDerechaAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDerechaAtrasActionPerformed
         // TODO add your handling code here:
-        movimiento.derechaAtras();
+        moverMovil.derechaAtras();
     }//GEN-LAST:event_botonDerechaAtrasActionPerformed
 
     private void botonDetenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDetenerActionPerformed
         // TODO add your handling code here:
-        movimiento.parar();
+        moverMovil.parar();
     }//GEN-LAST:event_botonDetenerActionPerformed
 
     private void botonIzquierdaAdelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIzquierdaAdelanteActionPerformed
         // TODO add your handling code here:
-        movimiento.izquierdaAdelante();
+        moverMovil.izquierdaAdelante();
     }//GEN-LAST:event_botonIzquierdaAdelanteActionPerformed
 
     private void botonIzquierdaAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIzquierdaAtrasActionPerformed
         // TODO add your handling code here:
-        movimiento.izquierdaAtras();
+        moverMovil.izquierdaAtras();
     }//GEN-LAST:event_botonIzquierdaAtrasActionPerformed
 
     private void botonGiroDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGiroDerechaActionPerformed
         // TODO add your handling code here:
-        movimiento.giroDerecha();
+        moverMovil.giroDerecha();
     }//GEN-LAST:event_botonGiroDerechaActionPerformed
 
     private void botonGiroIzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGiroIzquierdaActionPerformed
         // TODO add your handling code here:
-        movimiento.giroIzquierda();
+        moverMovil.giroIzquierda();
     }//GEN-LAST:event_botonGiroIzquierdaActionPerformed
 
     private void boton(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boton
@@ -258,6 +258,7 @@ public class IGJoystick extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAdelante;
     private javax.swing.JButton botonAtras;
+    private javax.swing.JButton botonConector;
     private javax.swing.JButton botonDerechaAdelante;
     private javax.swing.JButton botonDerechaAtras;
     private javax.swing.JButton botonDetener;
@@ -265,7 +266,6 @@ public class IGJoystick extends javax.swing.JFrame {
     private javax.swing.JButton botonGiroIzquierda;
     private javax.swing.JButton botonIzquierdaAdelante;
     private javax.swing.JButton botonIzquierdaAtras;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
