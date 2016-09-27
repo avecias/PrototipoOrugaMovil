@@ -1,5 +1,5 @@
 
-package app.controlador.control;
+package app.controlador.control.movil;
 
 import app.controlador.control.sesion.Sesion;
 import app.modelo.entidades.Parametro;

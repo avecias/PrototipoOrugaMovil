@@ -2,7 +2,7 @@
 Control para la carga de los archivo y mostrarlos en la tabla con lo demas resultados
 ademas de solicitarle un nombre especial y agregarle un fecha a cada lectura
  */
-package app.controlador.control;
+package app.controlador.control.archivo;
 
 import app.controlador.control.sesion.Sesion;
 import app.modelo.comunicacion.convertir.Convertir;

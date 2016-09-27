@@ -1,8 +1,8 @@
 //Ventana Inicial del programa para poder realizar todas las operaciones basicas del software
 package app.vista.usuario;
 
-import app.controlador.control.CargarArchivo;
-import app.controlador.control.UsarControl;
+import app.controlador.control.archivo.CargarArchivo;
+import app.controlador.control.movil.UsarControl;
 import app.controlador.control.sesion.Sesion;
 import javax.swing.ImageIcon;
 

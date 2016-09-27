@@ -1,6 +1,6 @@
 package app.vista.usuario;
 
-import app.controlador.control.MoverMovil;
+import app.controlador.control.movil.MoverMovil;
 import app.modelo.comunicacion.serial.ConexionSerial;
 import javax.swing.ImageIcon;
 
