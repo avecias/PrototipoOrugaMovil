@@ -1,7 +1,7 @@
 /*
 Controlador para mover el movil (no es conveniente que se estatico)
  */
-package app.controlador.control.movil;
+package app.controlador.controlmovil;
 
 import app.modelo.comunicacion.serial.ConexionSerial;
 

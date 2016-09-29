@@ -1,7 +1,7 @@
 /*
  Covertir el archivo leido en string a un objeto tipo lectura
  */
-package app.modelo.comunicacion.convertir;
+package app.modelo.convertidor;
 
 import app.modelo.entidades.Lectura;
 import app.modelo.entidades.Trama;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Convertir {
+public class Convertidor {
 
     public static Lectura aLectura(File file) {
         Lectura lectura = new Lectura();
@@ -60,45 +60,39 @@ public class Convertir {
         String a = "",b=a,c=a,d=a,e=a;
         int i = 0;
         while(i < linea.length()){
-            if(linea.charAt(i) == 'a'){
-                //Grabar a
-                i++;
-                while(isNumero(linea.charAt(i))){
-                    a += linea.charAt(i);
-                    i++;
-                }
-            }
-            else if(linea.charAt(i) == 'b'){
-                //Grabar a
-                i++;
-                while(isNumero(linea.charAt(i))){
-                    b += linea.charAt(i);
-                    i++;
-                }
-            }
-            else if(linea.charAt(i) == 'c'){
-                //Grabar a
-                i++;
-                while(isNumero(linea.charAt(i))){
-                    c += linea.charAt(i);
-                    i++;
-                }
-            }
-            else if(linea.charAt(i) == 'd'){
-                //Grabar a
-                i++;
-                while(isNumero(linea.charAt(i))){
-                    d += linea.charAt(i);
-                    i++;
-                }
-            }
-            else if(linea.charAt(i) == 'e'){
-                //Grabar a
-                i++;
-                while(i < linea.length()){
-                    e += linea.charAt(i);
-                    i++;
-                }
+            switch (linea.charAt(i)) {
+                case 'a':
+                    //Grabar a
+                    i++;while(isNumero(linea.charAt(i))){
+                        a += linea.charAt(i);
+                        i++;
+                    }   break;
+                case 'b':
+                    //Grabar a
+                    i++;while(isNumero(linea.charAt(i))){
+                        b += linea.charAt(i);
+                        i++;
+                    }   break;
+                case 'c':
+                    //Grabar a
+                    i++;while(isNumero(linea.charAt(i))){
+                        c += linea.charAt(i);
+                        i++;
+                    }   break;
+                case 'd':
+                    //Grabar a
+                    i++;while(isNumero(linea.charAt(i))){
+                        d += linea.charAt(i);
+                        i++;
+                    }   break;
+                case 'e':
+                    //Grabar a
+                    i++;while(i < linea.length()){
+                        e += linea.charAt(i);
+                        i++;
+                    }   break;
+                default:
+                    break;
             }
         }
         trama.setSensorA(Integer.valueOf(a));
@@ -112,11 +106,6 @@ public class Convertir {
     
     private static boolean isNumero(char c) {
         return c >= 48 && c <= 57;
-    }
-
-    public static void main(String[] args) {
-        Lectura lectura = aLectura(new File("prueba.txt"));
-        System.out.println(lectura.toString());
     }
 
 }

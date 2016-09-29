@@ -4,7 +4,7 @@ y el inicio de la sesion
  */
 package app.vista.usuario;
 
-import app.controlador.control.sesion.Sesion;
+import app.controlado.sesion.Sesion;
 import javax.swing.ImageIcon;
 
 

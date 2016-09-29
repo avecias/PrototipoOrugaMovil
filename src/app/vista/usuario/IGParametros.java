@@ -4,8 +4,8 @@ o la misma conexion esta venta aparecera, de lo contrario no
  */
 package app.vista.usuario;
 
-import app.controlador.control.movil.UsarControl;
-import app.controlador.control.sesion.Sesion;
+import app.controlador.controlmovil.UsarControl;
+import app.controlado.sesion.Sesion;
 import app.modelo.comunicacion.serial.ConexionSerial;
 import app.modelo.entidades.Parametro;
 import javax.swing.ImageIcon;

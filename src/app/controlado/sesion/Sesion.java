@@ -1,7 +1,7 @@
 /*
 Sesion del programa para poder y subir bajar parametros en un objeto general
  */
-package app.controlador.control.sesion;
+package app.controlado.sesion;
 
 import app.modelo.comunicacion.serial.ConexionSerial;
 import app.modelo.entidades.ArchivosCargado;
