@@ -3,13 +3,13 @@ Controlador para mover el movil (no es conveniente que se estatico)
  */
 package app.controlador.controlmovil;
 
-import app.modelo.comunicacion.serial.ConexionSerial;
+import app.modelo.comunicacion.serial.ConexionSerialImple;
 
 public class MoverMovil {
     
-    private final ConexionSerial conexionSerial;
+    private final ConexionSerialImple conexionSerial;
 
-    public MoverMovil(ConexionSerial conexionSerial) {
+    public MoverMovil(ConexionSerialImple conexionSerial) {
         this.conexionSerial = conexionSerial;
     }
     

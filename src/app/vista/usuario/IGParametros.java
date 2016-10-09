@@ -6,7 +6,7 @@ package app.vista.usuario;
 
 import app.controlador.controlmovil.UsarControl;
 import app.controlado.sesion.Sesion;
-import app.modelo.comunicacion.serial.ConexionSerial;
+import app.modelo.comunicacion.serial.ConexionSerialImple;
 import app.modelo.entidades.Parametro;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -198,7 +198,7 @@ public class IGParametros extends javax.swing.JFrame {
 
     private void mostrarPuertos() {
         //Mostrar todos los puertos disponible para poder seleccionar uno
-        Object[] puertos = ConexionSerial.puertosDisponibles();
+        Object[] puertos = ConexionSerialImple.puertosDisponibles();
         for (Object puerto : puertos) {
             comboCOM.addItem(puerto);
         }

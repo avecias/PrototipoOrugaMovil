@@ -3,7 +3,7 @@ Sesion del programa para poder y subir bajar parametros en un objeto general
  */
 package app.controlado.sesion;
 
-import app.modelo.comunicacion.serial.ConexionSerial;
+import app.modelo.comunicacion.serial.ConexionSerialImple;
 import app.modelo.entidades.ArchivosCargado;
 import app.modelo.entidades.Parametro;
 import java.util.ArrayList;
@@ -12,14 +12,14 @@ import java.util.List;
 public class Sesion {
     
     //Los objetos que contendra para la sesison
-    private ConexionSerial conexionSerial;
+    private ConexionSerialImple conexionSerial;
     private Parametro parametros;
     private List<ArchivosCargado> archivosCargados;
 
     public Sesion() {
     }
 
-    public Sesion(ConexionSerial conexionSerial, Parametro parametros, List<ArchivosCargado> archivosCargados) {
+    public Sesion(ConexionSerialImple conexionSerial, Parametro parametros, List<ArchivosCargado> archivosCargados) {
         this.conexionSerial = conexionSerial;
         this.parametros = parametros;
         this.archivosCargados = archivosCargados;
@@ -28,7 +28,7 @@ public class Sesion {
     public void iniciar(){
         //Iniciar los parametros de la lectura
         archivosCargados = new ArrayList<>();
-        conexionSerial = new ConexionSerial();
+        conexionSerial = new ConexionSerialImple();
     }
     
     public void teminar(){
@@ -36,11 +36,11 @@ public class Sesion {
         conexionSerial.cerrarPuerto();
     }
 
-    public ConexionSerial getConexionSerial() {
+    public ConexionSerialImple getConexionSerial() {
         return conexionSerial;
     }
 
-    public void setConexionSerial(ConexionSerial conexionSerial) {
+    public void setConexionSerial(ConexionSerialImple conexionSerial) {
         this.conexionSerial = conexionSerial;
     }
 

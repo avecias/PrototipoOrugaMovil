@@ -1,7 +1,7 @@
 package app.vista.usuario;
 
 import app.controlador.controlmovil.MoverMovil;
-import app.modelo.comunicacion.serial.ConexionSerial;
+import app.modelo.comunicacion.serial.ConexionSerialImple;
 import javax.swing.ImageIcon;
 
 public class IGJoystick extends javax.swing.JFrame {
@@ -9,7 +9,7 @@ public class IGJoystick extends javax.swing.JFrame {
     MoverMovil moverMovil;
     private IGPrincipal principal;
     
-    public IGJoystick(ConexionSerial conexionSerial, IGPrincipal principal) {
+    public IGJoystick(ConexionSerialImple conexionSerial, IGPrincipal principal) {
         this.principal = principal;
         initComponents();
         setIconImage(new ImageIcon("src/app/imagenes/icono.jpg").getImage());

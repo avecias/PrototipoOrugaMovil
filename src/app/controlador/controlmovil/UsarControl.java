@@ -1,7 +1,7 @@
 package app.controlador.controlmovil;
 
 import app.controlado.sesion.Sesion;
-import app.modelo.comunicacion.serial.ConexionSerial;
+import app.modelo.comunicacion.serial.ConexionSerialImple;
 import app.modelo.entidades.Parametro;
 import app.vista.usuario.IGJoystick;
 import app.vista.usuario.IGParametros;
@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class UsarControl {
 
     public static void hacer(Sesion sesion, IGPrincipal principal) {
-        if (ConexionSerial.puertosDisponibles().length != 0) {
+        if (ConexionSerialImple.puertosDisponibles().length != 0) {
             if (sesion.getConexionSerial().estaAbierto()) {
                 //si la conexion al puerto esta abierta continua al joystick directamente
                 new IGJoystick(sesion.getConexionSerial(), principal).setVisible(true);

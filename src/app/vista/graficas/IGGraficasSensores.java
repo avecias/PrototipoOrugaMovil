@@ -14,7 +14,7 @@ public class IGGraficasSensores extends javax.swing.JFrame {
         jPanel1.repaint();
         jPanel1.setLayout(new java.awt.BorderLayout());
         jPanel1.add(graficaXY.mostrar());
-        jPanel1.validate();
+        //jPanel1.validate();
     }
 
     @SuppressWarnings("unchecked")
