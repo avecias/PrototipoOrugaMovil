@@ -4,49 +4,59 @@ Controlador para mover el movil (no es conveniente que se estatico)
 package app.controlador.controlmovil;
 
 import app.modelo.comunicacion.serial.ConexionSerialImple;
+import javax.swing.JOptionPane;
+import jssc.SerialPortException;
 
 public class MoverMovil {
-    
+
     private final ConexionSerialImple conexionSerial;
 
     public MoverMovil(ConexionSerialImple conexionSerial) {
         this.conexionSerial = conexionSerial;
     }
-    
-    
+
     public void adelante() {
-        conexionSerial.escribirMensaje("9");
+        mover("9");
     }
 
     public void atras() {
-        conexionSerial.escribirMensaje("6");
+        mover("6");
     }
 
     public void derechaAdelante() {
-        conexionSerial.escribirMensaje("1");
+        mover("1");
     }
 
     public void derechaAtras() {
-        conexionSerial.escribirMensaje("2");
+        mover("2");
     }
 
     public void parar() {
-        conexionSerial.escribirMensaje("0");
+        mover("0");
     }
 
     public void izquierdaAdelante() {
-        conexionSerial.escribirMensaje("8");
+        mover("8");
     }
 
     public void izquierdaAtras() {
-        conexionSerial.escribirMensaje("7");
+        mover("7");
     }
 
     public void giroDerecha() {
-        conexionSerial.escribirMensaje("5");
+        mover("5");
     }
 
     public void giroIzquierda() {
-        conexionSerial.escribirMensaje(":");
+        mover(":");
+    }
+
+    private void mover(String m) {
+        try {
+            conexionSerial.escribirMensaje(m);
+        } catch (SerialPortException e) {
+            System.err.println("No se pudo mandar el movimiento " + e);
+            JOptionPane.showMessageDialog(null, "Error al mandar el movimiento\n" + e, "Error de conexion", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

@@ -7,6 +7,7 @@ import app.vista.usuario.IGJoystick;
 import app.vista.usuario.IGParametros;
 import app.vista.usuario.IGPrincipal;
 import javax.swing.JOptionPane;
+import jssc.SerialPortException;
 
 public class UsarControl {
 
@@ -21,8 +22,7 @@ public class UsarControl {
                 new IGParametros(sesion, principal).setVisible(true);
                 principal.setVisible(false);
             }
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(principal, "Error no se encontraron puertos COM disponibles", "Puertos COM no disponibles", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -33,10 +33,13 @@ public class UsarControl {
     }
 
     public static void conectarYUsar(Sesion sesion, Parametro parametro, IGPrincipal principal) {
+        //Se establecen el objeto parametro en la sesion y en el objeto de la comunicacion
         sesion.setParametros(parametro);
-        if (sesion.getConexionSerial().abrirPuerto(parametro)) {
+        sesion.getConexionSerial().setParametros(parametro);
+        try {
+            sesion.getConexionSerial().abrir();
             new IGJoystick(sesion.getConexionSerial(), principal).setVisible(true);
-        } else {
+        } catch (SerialPortException e) {
             JOptionPane.showMessageDialog(null, "Error al conectar con el puerto ", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }

@@ -8,6 +8,9 @@ import app.modelo.entidades.ArchivosCargado;
 import app.modelo.entidades.Parametro;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import jssc.SerialPortException;
 
 public class Sesion {
     
@@ -32,8 +35,12 @@ public class Sesion {
     }
     
     public void teminar(){
-        //Terminar con los objetos de la conexion
-        conexionSerial.cerrarPuerto();
+        try {
+            //Terminar con los objetos de la conexion
+            conexionSerial.cerrar();
+        } catch (SerialPortException ex) {
+            System.err.println("Error en cerrar los objetos");
+        }
     }
 
     public ConexionSerialImple getConexionSerial() {
