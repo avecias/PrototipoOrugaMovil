@@ -20,6 +20,17 @@ public class Punto {
         this.z = z;
     }
 
+    public Punto(int idPunto, double x, double y) {
+        this.idPunto = idPunto;
+        this.x = x;
+        this.y = y;
+    }
+
+    public Punto(int idPunto, double x) {
+        this.idPunto = idPunto;
+        this.x = x;
+    }
+
     public int getIdPunto() {
         return idPunto;
     }

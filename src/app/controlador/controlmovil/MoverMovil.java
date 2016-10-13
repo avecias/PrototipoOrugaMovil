@@ -51,6 +51,15 @@ public class MoverMovil {
         mover(":");
     }
 
+    public void autoExploracion() {
+        try {
+            mover("A");
+            conexionSerial.cerrar();
+        } catch (SerialPortException ex) {
+            System.err.println("Error al cerrar la conexion " + ex);
+        }
+    }
+
     private void mover(String m) {
         try {
             conexionSerial.escribirMensaje(m);

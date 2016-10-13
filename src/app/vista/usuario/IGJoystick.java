@@ -115,7 +115,12 @@ public class IGJoystick extends javax.swing.JFrame {
             }
         });
 
-        botonConector.setText("Desconectar");
+        botonConector.setText("AutoExploracion");
+        botonConector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonConectorActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Control para la manipulacion inambrica de movil");
@@ -144,9 +149,10 @@ public class IGJoystick extends javax.swing.JFrame {
                                 .addComponent(botonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(botonConector)
-                                    .addComponent(botonDetener))))
+                                .addComponent(botonDetener))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(botonConector)))
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(botonDerechaAtras)
@@ -188,7 +194,7 @@ public class IGJoystick extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonConector)
-                        .addGap(94, 94, 94))))
+                        .addGap(99, 99, 99))))
         );
 
         pack();
@@ -253,6 +259,12 @@ public class IGJoystick extends javax.swing.JFrame {
         // TODO add your handling code here:
         principal.setVisible(true);
     }//GEN-LAST:event_cerrar
+
+    private void botonConectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConectorActionPerformed
+        // Inicio de la exploracion autonoma
+        moverMovil.autoExploracion();
+        this.dispose();
+    }//GEN-LAST:event_botonConectorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

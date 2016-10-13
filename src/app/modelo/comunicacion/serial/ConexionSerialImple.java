@@ -59,7 +59,10 @@ public class ConexionSerialImple implements ConexionSerial, SerialPortEventListe
 
     @Override
     public boolean estaAbierto() {
-        return serialPort != null;
+        if (serialPort == null) {
+            return false;
+        }
+        return serialPort.isOpened();
     }
 
     @Override
@@ -68,11 +71,10 @@ public class ConexionSerialImple implements ConexionSerial, SerialPortEventListe
             try {
                 String receivedData = serialPort.readString(event.getEventValue());
                 //System.out.println("Received response: " + receivedData);
-                if(receivedData.contains("\n")){
+                if (receivedData.contains("\n")) {
                     mensaje = mensajeAux + receivedData;
                     mensajeAux = "";
-                }
-                else{
+                } else {
                     mensajeAux += receivedData;
                 }
             } catch (SerialPortException ex) {
