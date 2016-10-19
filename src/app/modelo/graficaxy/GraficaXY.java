@@ -37,7 +37,6 @@ public class GraficaXY{
 
 
     public ChartPanel mostrar() {
-        System.out.println("Mostrar");
         llenar();
         dataset.addSeries(s1);
         dataset.addSeries(s2);

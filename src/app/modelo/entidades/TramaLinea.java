@@ -5,7 +5,7 @@ package app.modelo.entidades;
 
 import java.io.Serializable;
 
-public class TramaLinea implements Serializable,Cloneable{
+public class TramaLinea implements Serializable, Cloneable {
 
     private int temperatura;
     private int gas;
@@ -123,10 +123,10 @@ public class TramaLinea implements Serializable,Cloneable{
     public String toString() {
         return "TramaLinea{" + "temperatura=" + temperatura + ", gas=" + gas + ", humo=" + humo + ", llama=" + llama + ", sonido=" + sonido + ", encoder=" + encoder + '}';
     }
-    
+
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return new TramaLinea(temperatura, gas, humo, llama, sonido, encoder);
     }
-    
+
 }
