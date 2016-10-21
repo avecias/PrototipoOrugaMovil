@@ -11,7 +11,7 @@ import jssc.SerialPortException;
 
 public class UsarControl {
 
-    public static void hacer(Sesion sesion, IGPrincipal principal) {
+    public void hacer(Sesion sesion, IGPrincipal principal) {
         if (ConexionSerialImple.puertosDisponibles().length != 0) {
             if (sesion.getConexionSerial().estaAbierto()) {
                 //si la conexion al puerto esta abierta continua al joystick directamente
@@ -27,12 +27,12 @@ public class UsarControl {
         }
     }
 
-    public static void comprobado(Sesion sesion, IGPrincipal principal, IGParametros iGParametros) {
+    public void comprobado(Sesion sesion, IGPrincipal principal, IGParametros iGParametros) {
         iGParametros.setVisible(false);
         new IGJoystick(sesion.getConexionSerial(), principal).setVisible(true);
     }
 
-    public static void conectarYUsar(Sesion sesion, Parametro parametro, IGPrincipal principal) {
+    public void conectarYUsar(Sesion sesion, Parametro parametro, IGPrincipal principal) {
         //Se establecen el objeto parametro en la sesion y en el objeto de la comunicacion
         sesion.setParametros(parametro);
         sesion.getConexionSerial().setParametros(parametro);

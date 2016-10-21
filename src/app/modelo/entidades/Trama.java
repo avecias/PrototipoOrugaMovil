@@ -1,57 +1,69 @@
 /*
-Trama equivalente a un la linea del archivo
-*/
+Trama final con los id de los sensores
+ */
 package app.modelo.entidades;
 
-public class Trama {
-    
-    private int sensorA;
-    private int sensorB;
-    private int sensorC;
-    private int sensorD;
+import java.io.Serializable;
+
+public class Trama implements Serializable, Cloneable {
+
+    private int temperatura;
+    private int gas;
+    private int humo;
+    private int llama;
+    private int sonido;
     private int encoder;
 
     public Trama() {
     }
 
-    public Trama(int sensorA, int sensorB, int sensorC, int sensorD, int encoder) {
-        this.sensorA = sensorA;
-        this.sensorB = sensorB;
-        this.sensorC = sensorC;
-        this.sensorD = sensorD;
+    public Trama(int temperatura, int gas, int humo, int llama, int sonido, int encoder) {
+        this.temperatura = temperatura;
+        this.gas = gas;
+        this.humo = humo;
+        this.llama = llama;
+        this.sonido = sonido;
         this.encoder = encoder;
     }
 
-    public int getSensorA() {
-        return sensorA;
+    public int getTemperatura() {
+        return temperatura;
     }
 
-    public void setSensorA(int sensorA) {
-        this.sensorA = sensorA;
+    public void setTemperatura(int temperatura) {
+        this.temperatura = temperatura;
     }
 
-    public int getSensorB() {
-        return sensorB;
+    public int getGas() {
+        return gas;
     }
 
-    public void setSensorB(int sensorB) {
-        this.sensorB = sensorB;
+    public void setGas(int gas) {
+        this.gas = gas;
     }
 
-    public int getSensorC() {
-        return sensorC;
+    public int getHumo() {
+        return humo;
     }
 
-    public void setSensorC(int sensorC) {
-        this.sensorC = sensorC;
+    public void setHumo(int humo) {
+        this.humo = humo;
     }
 
-    public int getSensorD() {
-        return sensorD;
+    public int getLlama() {
+        return llama;
     }
 
-    public void setSensorD(int sensorD) {
-        this.sensorD = sensorD;
+    public void setLlama(int llama) {
+        this.llama = llama;
+    }
+
+    public int getSonido() {
+        return sonido;
+    }
+
+    public void setSonido(int sonido) {
+        this.sonido = sonido;
     }
 
     public int getEncoder() {
@@ -63,23 +75,22 @@ public class Trama {
     }
 
     @Override
-    public String toString() {
-        return "Trama{" + "sensorA=" + sensorA + ", sensorB=" + sensorB + ", sensorC=" + sensorC + ", sensorD=" + sensorD + ", encoder=" + encoder + '}';
-    }
-
-    @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 31 * hash + this.sensorA;
-        hash = 31 * hash + this.sensorB;
-        hash = 31 * hash + this.sensorC;
-        hash = 31 * hash + this.sensorD;
-        hash = 31 * hash + this.encoder;
+        int hash = 5;
+        hash = 23 * hash + this.temperatura;
+        hash = 23 * hash + this.gas;
+        hash = 23 * hash + this.humo;
+        hash = 23 * hash + this.llama;
+        hash = 23 * hash + this.sonido;
+        hash = 23 * hash + this.encoder;
         return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
         if (obj == null) {
             return false;
         }
@@ -87,16 +98,19 @@ public class Trama {
             return false;
         }
         final Trama other = (Trama) obj;
-        if (this.sensorA != other.sensorA) {
+        if (this.temperatura != other.temperatura) {
             return false;
         }
-        if (this.sensorB != other.sensorB) {
+        if (this.gas != other.gas) {
             return false;
         }
-        if (this.sensorC != other.sensorC) {
+        if (this.humo != other.humo) {
             return false;
         }
-        if (this.sensorD != other.sensorD) {
+        if (this.llama != other.llama) {
+            return false;
+        }
+        if (this.sonido != other.sonido) {
             return false;
         }
         if (this.encoder != other.encoder) {
@@ -104,6 +118,15 @@ public class Trama {
         }
         return true;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "TramaLinea{" + "temperatura=" + temperatura + ", gas=" + gas + ", humo=" + humo + ", llama=" + llama + ", sonido=" + sonido + ", encoder=" + encoder + '}';
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new Trama(temperatura, gas, humo, llama, sonido, encoder);
+    }
+
 }

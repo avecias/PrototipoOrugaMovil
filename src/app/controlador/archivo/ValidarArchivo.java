@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 public class ValidarArchivo {
     
     
-    public static boolean hacer(File archivo){
+    public boolean hacer(File archivo){
         boolean resultado = false;
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(archivo)));

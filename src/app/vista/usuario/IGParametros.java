@@ -13,8 +13,9 @@ import javax.swing.JOptionPane;
 
 public class IGParametros extends javax.swing.JFrame {
 
-    private Sesion sesion;
-    private IGPrincipal principal; 
+    private final Sesion sesion;
+    private final IGPrincipal principal;
+    private final UsarControl usarControl;
     
     public IGParametros(Sesion sesion, IGPrincipal principal) {
         this.sesion = sesion;
@@ -22,6 +23,7 @@ public class IGParametros extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon("src/app/imagenes/icono.jpg").getImage());
         mostrarPuertos();
+        usarControl = new UsarControl();
     }
 
 
@@ -217,6 +219,6 @@ public class IGParametros extends javax.swing.JFrame {
         int paridad = comboParidad.getSelectedIndex();
         Parametro parametro = new Parametro(com, baudios, datos, paro, paridad);
         System.out.println(parametro);
-        UsarControl.conectarYUsar(sesion, parametro, principal);
+        usarControl.conectarYUsar(sesion, parametro, principal);
     }
 }

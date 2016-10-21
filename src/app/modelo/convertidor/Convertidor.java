@@ -50,39 +50,45 @@ public class Convertidor {
     }
 
     private static boolean esTrama(String linea) {
-        Pattern pat = Pattern.compile("^a\\d{1,4}b\\d{1,4}c\\d{1,4}d\\d{1,4}e\\d{1,2}");
+        Pattern pat = Pattern.compile("^t\\d{1,4}g\\d{1,4}h\\d{1,4}f\\d{1,4}s\\d{1,4}e\\d{1,2}");
         Matcher mat = pat.matcher(linea);
         return mat.matches();
     }
 
     private static Trama seccionar(String linea) {
         Trama trama = new Trama();
-        String a = "",b=a,c=a,d=a,e=a;
+        String t = "",g=t,h=t,f=t,s=t,e=t;
         int i = 0;
         while(i < linea.length()){
             switch (linea.charAt(i)) {
-                case 'a':
+                case 't':
                     //Grabar a
                     i++;while(isNumero(linea.charAt(i))){
-                        a += linea.charAt(i);
+                        t += linea.charAt(i);
                         i++;
                     }   break;
-                case 'b':
+                case 'g':
                     //Grabar a
                     i++;while(isNumero(linea.charAt(i))){
-                        b += linea.charAt(i);
+                        g += linea.charAt(i);
                         i++;
                     }   break;
-                case 'c':
+                case 'h':
                     //Grabar a
                     i++;while(isNumero(linea.charAt(i))){
-                        c += linea.charAt(i);
+                        h += linea.charAt(i);
                         i++;
                     }   break;
-                case 'd':
+                case 'f':
                     //Grabar a
                     i++;while(isNumero(linea.charAt(i))){
-                        d += linea.charAt(i);
+                        f += linea.charAt(i);
+                        i++;
+                    }   break;
+                case 's':
+                    //Grabar a
+                    i++;while(isNumero(linea.charAt(i))){
+                        s += linea.charAt(i);
                         i++;
                     }   break;
                 case 'e':
@@ -95,10 +101,11 @@ public class Convertidor {
                     break;
             }
         }
-        trama.setSensorA(Integer.valueOf(a));
-        trama.setSensorB(Integer.valueOf(b));
-        trama.setSensorC(Integer.valueOf(c));
-        trama.setSensorD(Integer.valueOf(d));
+        trama.setTemperatura(Integer.valueOf(t));
+        trama.setGas(Integer.valueOf(g));
+        trama.setHumo(Integer.valueOf(h));
+        trama.setLlama(Integer.valueOf(f));
+        trama.setSonido(Integer.valueOf(s));
         trama.setEncoder(Integer.valueOf(e));
         return trama;
     }

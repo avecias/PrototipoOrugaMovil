@@ -26,7 +26,6 @@ public class Graficar {
             return;
         }
         //Pasar a graficar
-        System.out.println("Seleccionado " + tabla.getSelectedRow());
         graficaXY = new GraficaXY(sesion.getArchivosCargados().get(tabla.getSelectedRow()).getLectura());
         new IGGraficasSensores(principal,graficaXY).setVisible(true);
     }

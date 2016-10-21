@@ -3,7 +3,9 @@ Clase punto haciendo alucion a un vector en 2D O 3D
  */
 package app.modelo.entidades;
 
-public class Punto {
+import java.io.Serializable;
+
+public class Punto implements Serializable,Cloneable{
     
     private int idPunto;
     private double x;
@@ -98,6 +100,11 @@ public class Punto {
             return false;
         }
         return true;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone(); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

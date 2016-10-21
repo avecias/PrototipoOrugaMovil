@@ -4,7 +4,6 @@ package app.modelo.graficaxy;
 import app.modelo.entidades.Lectura;
 import app.modelo.entidades.Trama;
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.List;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -17,20 +16,22 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 public class GraficaXY{
 
-    private final XYSeries s1;
-    private final XYSeries s2;
-    private final XYSeries s3;
-    private final XYSeries s4;
+    private final XYSeries serieTemperatura;
+    private final XYSeries serieGas;
+    private final XYSeries serieHumo;
+    private final XYSeries serieLlamaFuego;
+    private final XYSeries serieSonido;
     private final XYSeries enconder;
     private final XYSeriesCollection dataset;
     private final Lectura lectura;
 
     public GraficaXY(Lectura lectura) {
         this.lectura = lectura;
-        s1 = new XYSeries("Sensor A");
-        s2 = new XYSeries("Sensor B");
-        s3 = new XYSeries("Sensor C");
-        s4 = new XYSeries("Sensor D");
+        serieTemperatura = new XYSeries("Temperatura");
+        serieGas = new XYSeries("Gas");
+        serieHumo = new XYSeries("Humo");
+        serieLlamaFuego = new XYSeries("Lllama de Fuego");
+        serieSonido = new XYSeries("Sonido");
         enconder = new XYSeries("Encoder");
         dataset = new XYSeriesCollection();
     }
@@ -38,10 +39,11 @@ public class GraficaXY{
 
     public ChartPanel mostrar() {
         llenar();
-        dataset.addSeries(s1);
-        dataset.addSeries(s2);
-        dataset.addSeries(s3);
-        dataset.addSeries(s4);
+        dataset.addSeries(serieTemperatura);
+        dataset.addSeries(serieGas);
+        dataset.addSeries(serieHumo);
+        dataset.addSeries(serieLlamaFuego);
+        dataset.addSeries(serieSonido);
         final JFreeChart chart = ChartFactory.createXYLineChart(
                 "Prueba de Robot Movil", // chart title
                 "Category", // domain axis label
@@ -66,10 +68,11 @@ public class GraficaXY{
         List<Trama> tramas = lectura.getTramas();
         for (int i = 0; i < tramas.size(); i++) {
             Trama trama = tramas.get(i);
-            s1.add(i, trama.getSensorA());
-            s2.add(i, trama.getSensorB());
-            s3.add(i, trama.getSensorC());
-            s4.add(i, trama.getSensorD());
+            serieTemperatura.add(i, trama.getTemperatura());
+            serieGas.add(i, trama.getGas());
+            serieHumo.add(i, trama.getHumo());
+            serieLlamaFuego.add(i, trama.getLlama());
+            serieSonido.add(i, trama.getSonido());
             enconder.add(i, trama.getEncoder());
         }
     }

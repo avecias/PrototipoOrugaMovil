@@ -8,8 +8,6 @@ import app.modelo.entidades.ArchivosCargado;
 import app.modelo.entidades.Parametro;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import jssc.SerialPortException;
 
 public class Sesion {
@@ -66,6 +64,5 @@ public class Sesion {
     public void setArchivosCargados(List<ArchivosCargado> archivosCargados) {
         this.archivosCargados = archivosCargados;
     }
-
     
 }

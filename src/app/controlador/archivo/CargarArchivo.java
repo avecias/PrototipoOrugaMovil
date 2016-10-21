@@ -23,13 +23,14 @@ import javax.swing.table.DefaultTableModel;
 public class CargarArchivo {
     
     public static void hacer(Sesion sesion, JTable tabla, JLabel pieTabla){
+        ValidarArchivo validarArchivo = new ValidarArchivo();
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Seleccione el archivo de las lecturas");
         fileChooser.setFileFilter(new FileNameExtensionFilter("TXT","txt"));
         if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             //Verificar si es un archivo valido para ser leido
-            if(!ValidarArchivo.hacer(file)){
+            if(!validarArchivo.hacer(file)){
                 JOptionPane.showMessageDialog(null, "El cotenido del archivo no es correcto", "Archivo no valido", JOptionPane.ERROR_MESSAGE);
                 return;
             }

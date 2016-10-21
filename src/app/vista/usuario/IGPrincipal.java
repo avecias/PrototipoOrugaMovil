@@ -12,12 +12,14 @@ public class IGPrincipal extends javax.swing.JFrame {
 
     private final Sesion sesion;
     private final Graficar graficar;
+    private final UsarControl usarControl;
     
     public IGPrincipal(Sesion sesion) {
         this.sesion = sesion;
         initComponents();
         setIconImage(new ImageIcon("src/app/imagenes/icono.jpg").getImage());
         graficar = new Graficar();
+        usarControl = new UsarControl();
     }
 
     @SuppressWarnings("unchecked")
@@ -181,7 +183,7 @@ public class IGPrincipal extends javax.swing.JFrame {
 
     private void menuJoystickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuJoystickActionPerformed
         // TODO add your handling code here:
-        UsarControl.hacer(sesion,this);
+        usarControl.hacer(sesion,this);
     }//GEN-LAST:event_menuJoystickActionPerformed
 
     private void menuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSalirActionPerformed
