@@ -5,6 +5,7 @@ package app.controlado.sesion;
 
 import app.modelo.comunicacion.serial.ConexionSerialImple;
 import app.modelo.entidades.ArchivosCargado;
+import app.modelo.entidades.Fusion;
 import app.modelo.entidades.Parametro;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class Sesion {
     private ConexionSerialImple conexionSerial;
     private Parametro parametros;
     private List<ArchivosCargado> archivosCargados;
+    private Fusion fusion;
 
     public Sesion() {
     }
@@ -64,5 +66,12 @@ public class Sesion {
     public void setArchivosCargados(List<ArchivosCargado> archivosCargados) {
         this.archivosCargados = archivosCargados;
     }
-    
+
+    public Fusion getFusion() {
+        return fusion;
+    }
+
+    public void setFusion(Fusion fusion) {
+        this.fusion = fusion;
+    }
 }

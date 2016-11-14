@@ -1,27 +1,26 @@
 /*
-Algortimo de agrupamiento por K-means
-condicion de k impar y mayor a 3
+Clasificador de K-means en 3d
  */
 package app.modelo.ia.kmeans;
-
 import app.modelo.entidades.Clase;
 import app.modelo.entidades.Punto;
-import app.modelo.ia.clasificador.ClasificadorEuclidiano2D;
-import app.modelo.operaciones.DosDimensiones;
+import app.modelo.ia.clasificador.ClasificadorEuclidiano3D;
+import app.modelo.operaciones.TresDimensiones;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Kmeans {
 
+public class Kmeans3D {
+    
     private List<Punto> bancoDeDatos;
     private int k;
     private Clase[] clases;
     private Punto[] centroides;
     private Punto[] centroidesAnteriores;
-    private ClasificadorEuclidiano2D clasificador;
+    private ClasificadorEuclidiano3D clasificador;
 
-    public Kmeans(List<Punto> bancoDeDatos, int k) {
+    public Kmeans3D(List<Punto> bancoDeDatos, int k) {
         this.bancoDeDatos = bancoDeDatos;
         this.k = k;
         // Inicializar clases con el tamaño de K
@@ -34,7 +33,7 @@ public class Kmeans {
         // Inicializar los parametros
         inicializar();
         // Inicializar las primeras clases
-        clasificador = new ClasificadorEuclidiano2D(centroides);
+        clasificador = new ClasificadorEuclidiano3D(centroides);
         //Condicion de Paro
         while (!sonCentrosIguales()) {
             //Borrar la anterior clasificacion
@@ -44,7 +43,7 @@ public class Kmeans {
                 clases[clasificador.clasificarConCentroide(punto)].getPuntos().add(punto);
             }
             calcularCentroides();
-            clasificador = new ClasificadorEuclidiano2D(centroides);
+            clasificador = new ClasificadorEuclidiano3D(centroides);
         }
         agregarCentroides();
         return clases;
@@ -53,7 +52,7 @@ public class Kmeans {
     private void inicializar() {
         for (int i = 0; i < k; i++) {
             //Le damos el centro a los primeros elemento del banco de datos
-            centroides[i] = new Punto(-1, bancoDeDatos.get(i).getX(), bancoDeDatos.get(i).getY());
+            centroides[i] = new Punto(-1, bancoDeDatos.get(i).getX(), bancoDeDatos.get(i).getY(),bancoDeDatos.get(i).getZ());
             // Inicializamos las clases
             clases[i] = new Clase("Clase" + i, new ArrayList<Punto>());
         }
@@ -66,7 +65,7 @@ public class Kmeans {
     private void calcularCentroides() {
         centroidesAnteriores = centroides;
         for (int i = 0; i < clases.length; i++) {
-            Punto punto = DosDimensiones.centroide(clases[i].getPuntos());
+            Punto punto = TresDimensiones.centroide(clases[i].getPuntos());
             centroides[i] = new Punto(-1, punto.getX(), punto.getY());
         }
     }

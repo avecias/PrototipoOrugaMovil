@@ -4,6 +4,7 @@ package app.vista.usuario;
 import app.controlador.archivo.CargarArchivo;
 import app.controlador.controlmovil.UsarControl;
 import app.controlado.sesion.Sesion;
+import app.controlado.aprender.Aprender;
 import app.controlador.grafica.Graficar;
 import javax.swing.ImageIcon;
 
@@ -13,13 +14,15 @@ public class IGPrincipal extends javax.swing.JFrame {
     private final Sesion sesion;
     private final Graficar graficar;
     private final UsarControl usarControl;
+    private final Aprender aprender;
     
     public IGPrincipal(Sesion sesion) {
         this.sesion = sesion;
         initComponents();
-        setIconImage(new ImageIcon("src/app/imagenes/icono.jpg").getImage());
+        icono();
         graficar = new Graficar();
         usarControl = new UsarControl();
+        aprender = new Aprender();
     }
 
     @SuppressWarnings("unchecked")
@@ -41,6 +44,10 @@ public class IGPrincipal extends javax.swing.JFrame {
         menuJoystick = new javax.swing.JMenuItem();
         menuCargar = new javax.swing.JMenu();
         menuAbrirArchivo = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        menuFusionar = new javax.swing.JMenuItem();
+        menuClasificar = new javax.swing.JMenuItem();
+        menuVer = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Prototipo de Robot Oruga Movil");
@@ -136,6 +143,31 @@ public class IGPrincipal extends javax.swing.JFrame {
 
         menuBarra.add(menuCargar);
 
+        jMenu1.setText("Aprendizaje");
+
+        menuFusionar.setText("Fusionar Datos");
+        menuFusionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFusionarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuFusionar);
+
+        menuClasificar.setText("Clasificar Con Supervision");
+        menuClasificar.setEnabled(false);
+        menuClasificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuClasificarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuClasificar);
+
+        menuVer.setText("Ver Aprendizaje");
+        menuVer.setEnabled(false);
+        jMenu1.add(menuVer);
+
+        menuBarra.add(jMenu1);
+
         setJMenuBar(menuBarra);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,22 +234,40 @@ public class IGPrincipal extends javax.swing.JFrame {
         graficar.hacer(this, sesion, tabla);
     }//GEN-LAST:event_botonVerGraficasActionPerformed
 
+    private void menuFusionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFusionarActionPerformed
+        // Interfaz de la fucion de datos y almacenarlos
+        aprender.fusionar(sesion, tabla,menuClasificar);
+    }//GEN-LAST:event_menuFusionarActionPerformed
+
+    private void menuClasificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClasificarActionPerformed
+        // Si se ha subido a session el tipo de fusion de datos se puede ver los datos
+        System.out.println(sesion.getFusion());
+    }//GEN-LAST:event_menuClasificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonVerGraficas;
     private javax.swing.JLabel etiquetaEstado;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem menuAbrirArchivo;
     private javax.swing.JMenu menuArchivo;
     private javax.swing.JMenuBar menuBarra;
     private javax.swing.JMenu menuCargar;
+    private javax.swing.JMenuItem menuClasificar;
     private javax.swing.JMenu menuControl;
+    private javax.swing.JMenuItem menuFusionar;
     private javax.swing.JMenuItem menuJoystick;
     private javax.swing.JMenuItem menuLimpiar;
     private javax.swing.JMenuItem menuSalir;
+    private javax.swing.JMenuItem menuVer;
     private javax.swing.JPanel pie;
     private javax.swing.JLabel pieTabla;
     private javax.swing.JTable tabla;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
+
+    private void icono() {
+        setIconImage(new ImageIcon("src/app/imagenes/icono.jpg").getImage());
+    }
 }

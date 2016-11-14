@@ -86,7 +86,7 @@ public class Clase {
     @Override
     public String toString() {
         String to = "Clase{" + "nombre=" + nombre + "}\n";
-        to += centroide.toString() + "\n";
+        to += "Centroide = " + centroide.toString() + "\n";
         for (Punto punto : puntos) {
             to += punto.toString() + "\n";
         }

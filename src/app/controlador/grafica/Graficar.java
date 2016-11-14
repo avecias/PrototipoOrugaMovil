@@ -5,7 +5,7 @@ package app.controlador.grafica;
 
 import app.controlado.sesion.Sesion;
 import app.modelo.graficaxy.GraficaXY;
-import app.vista.graficas.IGGraficasSensores;
+import app.vista.graficas.IGGraficasXYSensores;
 import app.vista.usuario.IGPrincipal;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -27,6 +27,7 @@ public class Graficar {
         }
         //Pasar a graficar
         graficaXY = new GraficaXY(sesion.getArchivosCargados().get(tabla.getSelectedRow()).getLectura());
-        new IGGraficasSensores(principal,graficaXY).setVisible(true);
+        //new IGGraficasSensores(principal,graficaXY).setVisible(true);
+        new IGGraficasXYSensores(sesion.getArchivosCargados().get(tabla.getSelectedRow()).getNombre(), graficaXY).setVisible(true);
     }
 }

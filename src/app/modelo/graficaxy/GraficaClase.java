@@ -21,9 +21,9 @@ public class GraficaClase {
     private ChartPanel chartPanel;
     private XYPlot plot;
 
-    public ChartPanel crearChart(Clase[] clases) {
+    public ChartPanel crearChart(Clase[] clases, String tituloPanel) {
         XYDataset dataset = crearDataSet(clases);
-        chart = ChartFactory.createScatterPlot("Agrupamiento",
+        chart = ChartFactory.createScatterPlot(tituloPanel,
                 "Eje X", "Eje Y", dataset, PlotOrientation.VERTICAL, true, true, false);
         plot = (XYPlot) chart.getPlot();
         plot.setDomainCrosshairVisible(true);
