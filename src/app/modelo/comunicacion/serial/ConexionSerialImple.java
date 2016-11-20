@@ -86,24 +86,4 @@ public class ConexionSerialImple implements ConexionSerial, SerialPortEventListe
     public static Object[] puertosDisponibles() {
         return SerialPortList.getPortNames();
     }
-
-    public static void main(String[] args) {
-        new Thread(new Runnable() {
-            @Override
-            @SuppressWarnings("SleepWhileInLoop")
-            public void run() {
-                ConexionSerialImple serial = new ConexionSerialImple(new Parametro("COM5", 9600, 8, 1, 0));
-                try {
-                    serial.abrir();
-                    Thread.sleep(2000);
-                    while (true) {
-                        Thread.sleep(200);
-                        System.out.print(serial.mensaje);
-                    }
-                } catch (SerialPortException | InterruptedException ex) {
-                    Logger.getLogger(ConexionSerialImple.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }).start();
-    }
 }

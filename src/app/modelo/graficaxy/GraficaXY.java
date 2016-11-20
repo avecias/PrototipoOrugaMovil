@@ -1,5 +1,7 @@
+/*
+Solo un valor mostraddo
+ */
 package app.modelo.graficaxy;
-
 
 import app.modelo.entidades.Lectura;
 import app.modelo.entidades.Trama;
@@ -14,38 +16,23 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-public class GraficaXY{
+public class GraficaXY {
 
-    private final XYSeries serieTemperatura;
-    private final XYSeries serieGas;
-    private final XYSeries serieHumo;
-    private final XYSeries serieLlamaFuego;
-    private final XYSeries serieSonido;
-    private final XYSeries enconder;
-    private final XYSeriesCollection dataset;
-    private final Lectura lectura;
+    private XYPlot plot;
+    private ChartPanel chartPanel;
+    private JFreeChart chart;
 
-    public GraficaXY(Lectura lectura) {
-        this.lectura = lectura;
-        serieTemperatura = new XYSeries("Temperatura");
-        serieGas = new XYSeries("Gas");
-        serieHumo = new XYSeries("Humo");
-        serieLlamaFuego = new XYSeries("Lllama de Fuego");
-        serieSonido = new XYSeries("Sonido");
-        enconder = new XYSeries("Encoder");
-        dataset = new XYSeriesCollection();
+    public GraficaXY() {
+
     }
 
-
-    public ChartPanel mostrar() {
-        llenar();
-        dataset.addSeries(serieTemperatura);
-        dataset.addSeries(serieGas);
-        dataset.addSeries(serieHumo);
-        dataset.addSeries(serieLlamaFuego);
-        dataset.addSeries(serieSonido);
-        final JFreeChart chart = ChartFactory.createXYLineChart(
-                "Prueba de Robot Movil", // chart title
+    public ChartPanel crearChart(String nombre, String dimension, double[] valores) {
+        XYSeries serie = new XYSeries(nombre);
+        XYSeriesCollection dataset = new XYSeriesCollection();
+        llenar(valores, serie);
+        dataset.addSeries(serie);
+        chart = ChartFactory.createXYLineChart(
+                "Grafica de " + nombre, // chart title
                 "Category", // domain axis label
                 "Value", // range axis label
                 dataset, // data
@@ -54,28 +41,20 @@ public class GraficaXY{
                 true,
                 false
         );
-        final XYPlot plot = chart.getXYPlot();
-        plot.setDomainAxis( new NumberAxis("muestras"));
-        plot.setRangeAxis(new NumberAxis("valor"));
+        plot = chart.getXYPlot();
+        plot.setDomainAxis(new NumberAxis("tiempo"));
+        plot.setRangeAxis(new NumberAxis(dimension));
         chart.setBackgroundPaint(Color.white);
         plot.setOutlinePaint(Color.black);
-        //final ChartPanel chartPanel = new ChartPanel(chart);
-        //chartPanel.setPreferredSize(new java.awt.Dimension(500, 270));
+        chartPanel = new ChartPanel(chart);
+        chartPanel.setPreferredSize(new java.awt.Dimension(500, 270));
         return new ChartPanel(chart);
     }
 
-    private void llenar() {
-        List<Trama> tramas = lectura.getTramas();
-        for (int i = 0; i < tramas.size(); i++) {
-            Trama trama = tramas.get(i);
-            serieTemperatura.add(i, trama.getTemperatura());
-            serieGas.add(i, trama.getGas());
-            serieHumo.add(i, trama.getHumo());
-            serieLlamaFuego.add(i, trama.getLlama());
-            serieSonido.add(i, trama.getSonido());
-            enconder.add(i, trama.getEncoder());
+    private void llenar(double[] valores, XYSeries serie) {
+        for (int i = 0; i < valores.length; i++) {
+            serie.add(i, valores[i]);
         }
     }
-    
 
 }

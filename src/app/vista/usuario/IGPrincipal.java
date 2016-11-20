@@ -6,6 +6,8 @@ import app.controlador.controlmovil.UsarControl;
 import app.controlado.sesion.Sesion;
 import app.controlado.aprender.Aprender;
 import app.controlador.grafica.Graficar;
+import app.modelo.ia.clasificador.Prueba;
+import app.modelo.ia.clasificador.PruebaKmeans3D;
 import javax.swing.ImageIcon;
 
 
@@ -242,6 +244,8 @@ public class IGPrincipal extends javax.swing.JFrame {
     private void menuClasificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClasificarActionPerformed
         // Si se ha subido a session el tipo de fusion de datos se puede ver los datos
         System.out.println(sesion.getFusion());
+        PruebaKmeans3D.main(new String[]{""});
+        Prueba.main(new String[]{""});
     }//GEN-LAST:event_menuClasificarActionPerformed
 
 

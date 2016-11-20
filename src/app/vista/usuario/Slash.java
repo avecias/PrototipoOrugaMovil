@@ -24,7 +24,7 @@ public class Slash extends javax.swing.JFrame {
                 notificacion.setText("Cargando...");
                 for (int i = 0; i < 100; i++) {
                     barra.setValue(i);
-                    Thread.sleep(10);
+                    Thread.sleep(5);
                 }
                 //Sesion iniciada
                 Sesion sesion = new Sesion();

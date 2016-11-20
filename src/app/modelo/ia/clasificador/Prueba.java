@@ -6,7 +6,6 @@ package app.modelo.ia.clasificador;
 import app.modelo.entidades.Clase;
 import app.modelo.entidades.Punto;
 import app.modelo.graficaxy.GraficaClase;
-import app.modelo.graficaxyz.GraficaClase3D;
 import app.modelo.ia.kmeans.Kmeans;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -60,7 +59,7 @@ public class Prueba {
         JFrame frame = new JFrame("Clasificador");
         frame.setContentPane(gc.crearChart(clasesG, "Pruebas previas"));
         frame.setPreferredSize(new Dimension(1000, 700));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
@@ -69,7 +68,7 @@ public class Prueba {
         JFrame frame2 = new JFrame("Sin clasificar");
         frame2.setContentPane(gc.crearChart(new Clase[]{new Clase("Sin", clasificar)}, "Datos sin agrupar"));
         frame2.setPreferredSize(new Dimension(1000, 700));
-        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame2.pack();
         frame2.setLocationRelativeTo(null);
         frame2.setVisible(true);
@@ -78,7 +77,7 @@ public class Prueba {
         JFrame frame3 = new JFrame("Clasificados");
         frame3.setContentPane(gc.crearChart(clasificado, "Clasificados por K-means"));
         frame3.setPreferredSize(new Dimension(1000, 700));
-        frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame3.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame3.pack();
         frame3.setLocationRelativeTo(null);
         frame3.setVisible(true);

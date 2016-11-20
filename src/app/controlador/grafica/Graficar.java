@@ -4,15 +4,20 @@ Controlador para graficar
 package app.controlador.grafica;
 
 import app.controlado.sesion.Sesion;
-import app.modelo.graficaxy.GraficaXY;
-import app.vista.graficas.IGGraficasXYSensores;
+import app.modelo.convertidor.Calibrar;
+import app.modelo.entidades.ArchivosCargado;
+import app.modelo.entidades.SensoresConvercion;
+import app.modelo.entidades.Trama;
+import app.modelo.graficaxy.GraficaXYs;
+import app.vista.graficas.IGSensores;
 import app.vista.usuario.IGPrincipal;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 public class Graficar {
     
-    private GraficaXY graficaXY;
+    private GraficaXYs graficaXY;
     
     public void hacer(IGPrincipal principal,Sesion sesion, JTable tabla){
         //Checar si algun archivo cragado
@@ -26,8 +31,11 @@ public class Graficar {
             return;
         }
         //Pasar a graficar
-        graficaXY = new GraficaXY(sesion.getArchivosCargados().get(tabla.getSelectedRow()).getLectura());
-        //new IGGraficasSensores(principal,graficaXY).setVisible(true);
-        new IGGraficasXYSensores(sesion.getArchivosCargados().get(tabla.getSelectedRow()).getNombre(), graficaXY).setVisible(true);
+        ArchivosCargado archivo = sesion.getArchivosCargados().get(tabla.getSelectedRow());
+        graficaXY = new GraficaXYs(archivo.getLectura());
+        SensoresConvercion sensores = Calibrar.hacer(archivo);
+        new IGSensores(graficaXY,sensores).setVisible(true);
+        // new IGGraficasXYSensores(sesion.getArchivosCargados().get(tabla.getSelectedRow()).getNombre(), graficaXY).setVisible(true);
     }
+    
 }

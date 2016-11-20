@@ -48,7 +48,7 @@ public class PruebaKmeans3D {
             clasificar3D.add(puntos3.get(i));
         }
         
-        Punto vectorEntrada = new Punto(1, 200.0, 200.0, 200.0);
+        Punto vectorEntrada = new Punto(1, 700.0, 700.0, 700.0);
         List<Punto> entrada = new ArrayList<>();
         entrada.add(vectorEntrada);
 
@@ -73,7 +73,7 @@ public class PruebaKmeans3D {
         // Grafica en 3d de distancia minima
         JFrame frame1 = new JFrame("3D");
         frame1.setContentPane(gc.crearChart(clasesG, "Clases en 3D", "Clases mostradas en 3d y clasificador de distancia minima"));
-        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame1.pack();
         frame1.setLocationRelativeTo(null);
         frame1.setVisible(true);
@@ -81,7 +81,7 @@ public class PruebaKmeans3D {
         // Grafica en 3d de puntos sin clasificar
         JFrame frame2 = new JFrame("Sin Clasificar en 3D");
         frame2.setContentPane(gc.crearChart(new Clase[]{new Clase("Sin", clasificar3D)}, "Clases sin Clasificar en 3D", "Clases mostradas en 3d y clasificador de distancia minima"));
-        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame2.pack();
         frame2.setLocationRelativeTo(null);
         frame2.setVisible(true);
@@ -90,7 +90,7 @@ public class PruebaKmeans3D {
         Clase[] clasificado = new Kmeans3D(clasificar3D, 3).calcular();
         JFrame frame3 = new JFrame("Clasificados");
         frame3.setContentPane(gc.crearChart(clasificado, "Clasificados por K-means","Clasificacion por k-meas"));
-        frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame3.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame3.pack();
         frame3.setLocationRelativeTo(null);
         frame3.setVisible(true);
