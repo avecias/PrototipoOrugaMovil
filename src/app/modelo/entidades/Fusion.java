@@ -8,8 +8,8 @@ import java.util.Arrays;
 
 public class Fusion implements Serializable{
     
-    public static int dosDimensiones = 2;
-    public static int tresDimensiones = 3;
+    public static int DOS_DIMENSIONES = 2;
+    public static int TRES_DIMENSIONES = 3;
     
     private String[] fusion1;
     private String[] fusion2;
@@ -38,22 +38,6 @@ public class Fusion implements Serializable{
         this.k1 = k1;
         this.k2 = k2;
         this.k3 = k3;
-    }
-
-    public static int getDosDimensiones() {
-        return dosDimensiones;
-    }
-
-    public static void setDosDimensiones(int dosDimensiones) {
-        Fusion.dosDimensiones = dosDimensiones;
-    }
-
-    public static int getTresDimensiones() {
-        return tresDimensiones;
-    }
-
-    public static void setTresDimensiones(int tresDimensiones) {
-        Fusion.tresDimensiones = tresDimensiones;
     }
 
     public String[] getFusion1() {

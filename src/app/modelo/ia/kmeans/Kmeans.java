@@ -11,6 +11,7 @@ import app.modelo.operaciones.DosDimensiones;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class Kmeans {
 
@@ -50,10 +51,33 @@ public class Kmeans {
         return clases;
     }
 
+    public Clase[] calcularClases() {
+        // Inicializar los parametros
+        inicializar();
+        // Inicializar las primeras clases
+        clasificador = new ClasificadorEuclidiano2D(centroides);
+        //Condicion de Paro
+        while (!sonCentrosIguales()) {
+            //Borrar la anterior clasificacion
+            borrar();
+            for (Punto punto : bancoDeDatos) {
+                // Agregar a la clase que la claficacion
+                clases[clasificador.clasificar(punto)].getPuntos().add(punto);
+            }
+            calcularCentroides();
+            clasificador = new ClasificadorEuclidiano2D(centroides);
+        }
+        agregarCentroides();
+        return clases;
+    }
+
     private void inicializar() {
+        Random r = new Random();
         for (int i = 0; i < k; i++) {
             //Le damos el centro a los primeros elemento del banco de datos
-            centroides[i] = new Punto(-1, bancoDeDatos.get(i).getX(), bancoDeDatos.get(i).getY());
+            int v = Math.abs(r.nextInt() % bancoDeDatos.size());
+            centroides[i] = new Punto(-1, bancoDeDatos.get(v).getX(), bancoDeDatos.get(v).getY());
+            // System.out.println(centroides[i]);
             // Inicializamos las clases
             clases[i] = new Clase("Clase" + i, new ArrayList<Punto>());
         }
@@ -106,4 +130,14 @@ public class Kmeans {
     public void setClases(Clase[] clases) {
         this.clases = clases;
     }
+
+//    public static void main(String[] args) {
+//        Random r = new Random();
+//        int[] valores = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+//        for (int i = 0; i < 4; i++) {
+//            int v = Math.abs(r.nextInt()%valores.length);
+//            System.out.println(v);
+//            System.out.println(valores[v]);
+//        }
+//    }
 }

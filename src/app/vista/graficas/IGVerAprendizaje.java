@@ -3,31 +3,28 @@ Clase para la visualizacion de la fusion de datos para su visualizacion y clasif
  */
 package app.vista.graficas;
 
-import app.controlado.aprender.Supervisar;
 import app.controlado.sesion.Sesion;
 import app.modelo.entidades.Clase;
 import app.modelo.entidades.Fusion;
 import app.modelo.graficaxy.GraficaClase;
 import app.modelo.graficaxyz.GraficaClase3D;
 import java.util.List;
-import javax.swing.JMenuItem;
 
-public class IGAprendizajeSupervisado extends javax.swing.JFrame {
+public class IGVerAprendizaje extends javax.swing.JFrame {
 
-    private final Supervisar supervisar;
-    private final List<Clase[]> fusionados;
+    
     private final Sesion sesion;
-    private final JMenuItem menuVer;
-
-    public IGAprendizajeSupervisado(JMenuItem menuVer, Sesion sesion, List<Clase[]> fusionados) {
-        this.fusionados = fusionados;
+    private final List<Clase[]> fusionadosClasificados;
+    private final List<Clase[]> fusionados;
+    
+    public IGVerAprendizaje(Sesion sesion, List<Clase[]> fusionadosClasificados, List<Clase[]> fusionados) {
         this.sesion = sesion;
-        this.menuVer = menuVer;
+        this.fusionadosClasificados = fusionadosClasificados;
+        this.fusionados  =fusionados;
         initComponents();
-        supervisar = new Supervisar();
         inicializar();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -85,7 +82,7 @@ public class IGAprendizajeSupervisado extends javax.swing.JFrame {
 
         menuArchivo.setText("Archivo");
 
-        MenuAceptar.setText("Insertar Valores de K");
+        MenuAceptar.setText("Salir");
         MenuAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuAceptarActionPerformed(evt);
@@ -117,7 +114,8 @@ public class IGAprendizajeSupervisado extends javax.swing.JFrame {
 
     private void MenuAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAceptarActionPerformed
         // Agregar k para la supervision
-        supervisar.hacer(menuVer, this, sesion, tabPanel);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_MenuAceptarActionPerformed
 
 
@@ -134,38 +132,38 @@ public class IGAprendizajeSupervisado extends javax.swing.JFrame {
 
     private void inicializar() {
         GraficaClase clase = new GraficaClase();
-        GraficaClase3D clase3d = new GraficaClase3D();
+        GraficaClase3D clase3D = new GraficaClase3D();
         // Panel1
         panel1.removeAll();
         panel1.repaint();
         panel1.setLayout(new java.awt.BorderLayout());
-        if (fusionados.get(0)[0].getDimension() == Fusion.DOS_DIMENSIONES) {
-            panel1.add(clase.crearChart(fusionados.get(0), fusionados.get(0)[0].getNombre()));  
+        if(fusionados.get(0)[0].getDimension() == Fusion.DOS_DIMENSIONES){
+            panel1.add(clase.crearChart(fusionadosClasificados.get(0), fusionados.get(0)[0].getNombre()));
         }
         else{
-            panel1.add(clase3d.crearChart(fusionados.get(0), fusionados.get(0)[0].getNombre(),fusionados.get(0)[0].getNombre())); 
+            panel1.add(clase3D.crearChart(fusionadosClasificados.get(0), fusionados.get(0)[0].getNombre(), fusionados.get(0)[0].getNombre()));
         }
         panel1.validate();
         // Panel1
         panel2.removeAll();
         panel2.repaint();
         panel2.setLayout(new java.awt.BorderLayout());
-        if (fusionados.get(1)[0].getDimension() == Fusion.DOS_DIMENSIONES) {
-            panel2.add(clase.crearChart(fusionados.get(1), fusionados.get(1)[0].getNombre()));  
+        if(fusionados.get(1)[0].getDimension() == Fusion.DOS_DIMENSIONES){
+            panel2.add(clase.crearChart(fusionadosClasificados.get(1), fusionados.get(1)[0].getNombre()));
         }
         else{
-            panel2.add(clase3d.crearChart(fusionados.get(1), fusionados.get(1)[0].getNombre(),fusionados.get(1)[0].getNombre())); 
+            panel2.add(clase3D.crearChart(fusionadosClasificados.get(1), fusionados.get(1)[0].getNombre(), fusionados.get(1)[0].getNombre()));
         }
         panel2.validate();
         // Panel1
         panel3.removeAll();
         panel3.repaint();
         panel3.setLayout(new java.awt.BorderLayout());
-        if (fusionados.get(2)[0].getDimension() == Fusion.DOS_DIMENSIONES) {
-            panel3.add(clase.crearChart(fusionados.get(2), fusionados.get(2)[0].getNombre()));  
+        if(fusionados.get(2)[0].getDimension() == Fusion.DOS_DIMENSIONES){
+            panel3.add(clase.crearChart(fusionadosClasificados.get(2), fusionados.get(2)[0].getNombre()));
         }
         else{
-            panel3.add(clase3d.crearChart(fusionados.get(2), fusionados.get(2)[0].getNombre(),fusionados.get(2)[0].getNombre())); 
+            panel3.add(clase3D.crearChart(fusionadosClasificados.get(2), fusionados.get(2)[0].getNombre(), fusionados.get(2)[0].getNombre()));
         }
         panel3.validate();
     }

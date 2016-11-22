@@ -5,6 +5,7 @@ package app.controlado.sesion;
 
 import app.modelo.comunicacion.serial.ConexionSerialImple;
 import app.modelo.entidades.ArchivosCargado;
+import app.modelo.entidades.Clase;
 import app.modelo.entidades.Fusion;
 import app.modelo.entidades.Parametro;
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ public class Sesion {
     private Parametro parametros;
     private List<ArchivosCargado> archivosCargados;
     private Fusion fusion;
+    private List<Clase[]> fusionados;
+    private List<Clase[]> fusionadosClasificados;
 
     public Sesion() {
     }
@@ -73,5 +76,21 @@ public class Sesion {
 
     public void setFusion(Fusion fusion) {
         this.fusion = fusion;
+    }
+
+    public List<Clase[]> getFusionados() {
+        return fusionados;
+    }
+
+    public void setFusionados(List<Clase[]> fusionados) {
+        this.fusionados = fusionados;
+    }
+
+    public List<Clase[]> getFusionadosClasificados() {
+        return fusionadosClasificados;
+    }
+
+    public void setFusionadosClasificados(List<Clase[]> fusionadosClasificados) {
+        this.fusionadosClasificados = fusionadosClasificados;
     }
 }

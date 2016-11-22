@@ -81,6 +81,18 @@
                 <Property name="text" type="java.lang.String" value="Ver Aprendizaje"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuVerActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuResultado">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Resultado"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuResultadoActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

@@ -12,7 +12,7 @@ public class IGFusionar extends javax.swing.JFrame {
 
     private final JComboBox<String>[][] comboBoxs;
     private final Aprender aprender;
-    private Sesion sesion;
+    private final Sesion sesion;
     JMenuItem menuClasificar;
     
     public IGFusionar(Sesion sesion, JMenuItem menuClasificar) {

@@ -5,11 +5,11 @@ import app.controlador.archivo.CargarArchivo;
 import app.controlador.controlmovil.UsarControl;
 import app.controlado.sesion.Sesion;
 import app.controlado.aprender.Aprender;
+import app.controlado.aprender.Supervisar;
 import app.controlador.grafica.Graficar;
 import app.modelo.ia.clasificador.Prueba;
 import app.modelo.ia.clasificador.PruebaKmeans3D;
 import javax.swing.ImageIcon;
-
 
 public class IGPrincipal extends javax.swing.JFrame {
 
@@ -17,6 +17,7 @@ public class IGPrincipal extends javax.swing.JFrame {
     private final Graficar graficar;
     private final UsarControl usarControl;
     private final Aprender aprender;
+    private final Supervisar supervisar;
     
     public IGPrincipal(Sesion sesion) {
         this.sesion = sesion;
@@ -25,6 +26,7 @@ public class IGPrincipal extends javax.swing.JFrame {
         graficar = new Graficar();
         usarControl = new UsarControl();
         aprender = new Aprender();
+        supervisar = new Supervisar();
     }
 
     @SuppressWarnings("unchecked")
@@ -50,6 +52,7 @@ public class IGPrincipal extends javax.swing.JFrame {
         menuFusionar = new javax.swing.JMenuItem();
         menuClasificar = new javax.swing.JMenuItem();
         menuVer = new javax.swing.JMenuItem();
+        menuResultado = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Prototipo de Robot Oruga Movil");
@@ -166,7 +169,21 @@ public class IGPrincipal extends javax.swing.JFrame {
 
         menuVer.setText("Ver Aprendizaje");
         menuVer.setEnabled(false);
+        menuVer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuVerActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuVer);
+
+        menuResultado.setText("Resultado");
+        menuResultado.setEnabled(false);
+        menuResultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuResultadoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuResultado);
 
         menuBarra.add(jMenu1);
 
@@ -243,10 +260,21 @@ public class IGPrincipal extends javax.swing.JFrame {
 
     private void menuClasificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClasificarActionPerformed
         // Si se ha subido a session el tipo de fusion de datos se puede ver los datos
-        System.out.println(sesion.getFusion());
-        PruebaKmeans3D.main(new String[]{""});
-        Prueba.main(new String[]{""});
+        supervisar.mostrar(menuVer,sesion, tabla);
+//        System.out.println(sesion.getFusion());
+//        PruebaKmeans3D.main(new String[]{""});
+//        Prueba.main(new String[]{""});
     }//GEN-LAST:event_menuClasificarActionPerformed
+
+    private void menuVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerActionPerformed
+        // Ver el aprendizaje
+        aprender.verAprendizaje(sesion,menuResultado);
+    }//GEN-LAST:event_menuVerActionPerformed
+
+    private void menuResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuResultadoActionPerformed
+        // Comparar resultados
+        
+    }//GEN-LAST:event_menuResultadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -263,6 +291,7 @@ public class IGPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuFusionar;
     private javax.swing.JMenuItem menuJoystick;
     private javax.swing.JMenuItem menuLimpiar;
+    private javax.swing.JMenuItem menuResultado;
     private javax.swing.JMenuItem menuSalir;
     private javax.swing.JMenuItem menuVer;
     private javax.swing.JPanel pie;

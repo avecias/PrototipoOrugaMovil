@@ -9,6 +9,7 @@ import java.util.Objects;
 public class Clase {
     
     private String nombre;
+    private int dimension;
     private List<Punto> puntos;
     private Punto centroide;
 
@@ -48,6 +49,14 @@ public class Clase {
 
     public void setCentroide(Punto centroide) {
         this.centroide = centroide;
+    }
+
+    public int getDimension() {
+        return dimension;
+    }
+
+    public void setDimension(int dimension) {
+        this.dimension = dimension;
     }
 
     @Override

@@ -4,8 +4,14 @@ Acciones para el aprendizaje
 package app.controlado.aprender;
 
 import app.controlado.sesion.Sesion;
+import app.modelo.entidades.Clase;
 import app.modelo.entidades.Fusion;
+import app.modelo.ia.kmeans.Kmeans;
+import app.modelo.ia.kmeans.Kmeans3D;
+import app.vista.graficas.IGVerAprendizaje;
 import app.vista.usuario.IGFusionar;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -101,5 +107,41 @@ public class Aprender {
         }
         fusion.setFusion3(a.split(","));
         return fusion;
+    }
+
+    public void verAprendizaje(Sesion sesion, JMenuItem menuResultado) {
+        // Bajar lo datos para la sesion
+        List<Clase[]> fusionados = sesion.getFusionados();
+        List<Clase[]> fusionadosClasificados = new ArrayList<>();
+        if (sesion.getFusion().getFusion1().length == Fusion.DOS_DIMENSIONES) {
+            Kmeans kmeans1 = new Kmeans(fusionados.get(0)[0].getPuntos(), sesion.getFusion().getK1());
+            Clase[] clasificacion1 = kmeans1.calcular();
+            fusionadosClasificados.add(clasificacion1);
+        } else {
+            Kmeans3D kmeans1 = new Kmeans3D(fusionados.get(0)[0].getPuntos(), sesion.getFusion().getK1());
+            Clase[] clasificacion1 = kmeans1.calcular();
+            fusionadosClasificados.add(clasificacion1);
+        }
+        if (sesion.getFusion().getFusion2().length == Fusion.DOS_DIMENSIONES) {
+            Kmeans kmeans2 = new Kmeans(fusionados.get(1)[0].getPuntos(), sesion.getFusion().getK2());
+            Clase[] clasificacion2 = kmeans2.calcular();
+            fusionadosClasificados.add(clasificacion2);
+        } else {
+            Kmeans3D kmeans2 = new Kmeans3D(fusionados.get(1)[0].getPuntos(), sesion.getFusion().getK2());
+            Clase[] clasificacion2 = kmeans2.calcular();
+            fusionadosClasificados.add(clasificacion2);
+        }
+        if (sesion.getFusion().getFusion3().length == Fusion.DOS_DIMENSIONES) {
+            Kmeans kmeans3 = new Kmeans(fusionados.get(2)[0].getPuntos(), sesion.getFusion().getK3());
+            Clase[] clasificacion3 = kmeans3.calcular();
+            fusionadosClasificados.add(clasificacion3);
+        } else {
+            Kmeans3D kmeans3 = new Kmeans3D(fusionados.get(2)[0].getPuntos(), sesion.getFusion().getK3());
+            Clase[] clasificacion3 = kmeans3.calcular();
+            fusionadosClasificados.add(clasificacion3);
+        }
+        sesion.setFusionadosClasificados(fusionadosClasificados);
+        new IGVerAprendizaje(sesion, fusionadosClasificados, fusionados).setVisible(true);
+        menuResultado.setEnabled(true);
     }
 }
