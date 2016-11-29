@@ -33,7 +33,8 @@ public class Graficar {
         //Pasar a graficar
         ArchivosCargado archivo = sesion.getArchivosCargados().get(tabla.getSelectedRow());
         graficaXY = new GraficaXYs(archivo.getLectura());
-        SensoresConvercion sensores = Calibrar.hacer(archivo);
+        Calibrar calibrar = new Calibrar();
+        SensoresConvercion sensores = calibrar.hacer(archivo);
         new IGSensores(graficaXY,sensores).setVisible(true);
         // new IGGraficasXYSensores(sesion.getArchivosCargados().get(tabla.getSelectedRow()).getNombre(), graficaXY).setVisible(true);
     }

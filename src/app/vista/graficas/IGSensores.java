@@ -182,13 +182,13 @@ public class IGSensores extends javax.swing.JFrame {
         panel2.removeAll();
         panel2.repaint();
         panel2.setLayout(new java.awt.BorderLayout());
-        panel2.add(xy.crearChart("Temperatura","Grados Centigrados", sensores.getTemperatura()));
+        panel2.add(xy.crearChartTemperatura("Temperatura","Grados Centigrados", sensores.getTemperatura()));
         panel2.validate();
         // panel3
         panel3.removeAll();
         panel3.repaint();
         panel3.setLayout(new java.awt.BorderLayout());
-        panel3.add(xy.crearChart("Gas","Partes Por Millon", sensores.getGas()));
+        panel3.add(xy.crearChartGas("Gas","Partes Por Millon", sensores.getGas()));
         panel3.validate();
         // panel4
         panel4.removeAll();

@@ -49,6 +49,26 @@ public class Kmeans3D {
         agregarCentroides();
         return clases;
     }
+    
+    public Clase[] calcular2() {
+        // Inicializar los parametros
+        inicializar2();
+        // Inicializar las primeras clases
+        clasificador = new ClasificadorEuclidiano3D(centroides);
+        //Condicion de Paro
+        while (!sonCentrosIguales()) {
+            //Borrar la anterior clasificacion
+            borrar();
+            for (Punto punto : bancoDeDatos) {
+                // Agregar a la clase que la claficacion
+                clases[clasificador.clasificarConCentroide(punto)].getPuntos().add(punto);
+            }
+            calcularCentroides();
+            clasificador = new ClasificadorEuclidiano3D(centroides);
+        }
+        agregarCentroides();
+        return clases;
+    }
 
     private void inicializar() {
         Random r = new Random();
@@ -56,6 +76,15 @@ public class Kmeans3D {
             //Le damos el centro a los primeros elemento del banco de datos
             int v = Math.abs(r.nextInt() % bancoDeDatos.size());
             centroides[i] = new Punto(-1, bancoDeDatos.get(v).getX(), bancoDeDatos.get(v).getY(), bancoDeDatos.get(v).getZ());
+            // Inicializamos las clases
+            clases[i] = new Clase("Clase" + i, new ArrayList<Punto>());
+        }
+    }
+    
+    private void inicializar2() {
+        for (int i = 0; i < k; i++) {
+            //Le damos el centro a los primeros elemento del banco de datos
+            centroides[i] = new Punto(-1, bancoDeDatos.get(i).getX(), bancoDeDatos.get(i).getY(), bancoDeDatos.get(i).getZ());
             // Inicializamos las clases
             clases[i] = new Clase("Clase" + i, new ArrayList<Punto>());
         }

@@ -6,8 +6,6 @@ package app.controlado.aprender;
 import app.controlado.sesion.Sesion;
 import app.modelo.entidades.ArchivosCargado;
 import app.modelo.entidades.Clase;
-import app.modelo.entidades.Trama;
-import app.vista.usuario.IGFusionar;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;

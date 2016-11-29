@@ -6,6 +6,7 @@ import app.controlador.controlmovil.UsarControl;
 import app.controlado.sesion.Sesion;
 import app.controlado.aprender.Aprender;
 import app.controlado.aprender.Supervisar;
+import app.controlador.archivo.VerRuta;
 import app.controlador.grafica.Graficar;
 import app.modelo.ia.clasificador.Prueba;
 import app.modelo.ia.clasificador.PruebaKmeans3D;
@@ -18,6 +19,7 @@ public class IGPrincipal extends javax.swing.JFrame {
     private final UsarControl usarControl;
     private final Aprender aprender;
     private final Supervisar supervisar;
+    private final VerRuta ruta;
     
     public IGPrincipal(Sesion sesion) {
         this.sesion = sesion;
@@ -27,6 +29,7 @@ public class IGPrincipal extends javax.swing.JFrame {
         usarControl = new UsarControl();
         aprender = new Aprender();
         supervisar = new Supervisar();
+        ruta = new VerRuta();
     }
 
     @SuppressWarnings("unchecked")
@@ -43,6 +46,7 @@ public class IGPrincipal extends javax.swing.JFrame {
         menuBarra = new javax.swing.JMenuBar();
         menuArchivo = new javax.swing.JMenu();
         menuLimpiar = new javax.swing.JMenuItem();
+        menuRuta = new javax.swing.JMenuItem();
         menuSalir = new javax.swing.JMenuItem();
         menuControl = new javax.swing.JMenu();
         menuJoystick = new javax.swing.JMenuItem();
@@ -113,6 +117,14 @@ public class IGPrincipal extends javax.swing.JFrame {
 
         menuLimpiar.setText("Limpiar");
         menuArchivo.add(menuLimpiar);
+
+        menuRuta.setText("Ver Archivo Ruta");
+        menuRuta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRutaActionPerformed(evt);
+            }
+        });
+        menuArchivo.add(menuRuta);
 
         menuSalir.setText("Salir");
         menuSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -273,8 +285,14 @@ public class IGPrincipal extends javax.swing.JFrame {
 
     private void menuResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuResultadoActionPerformed
         // Comparar resultados
-        
+        PruebaKmeans3D.main(new String[]{""});
+        Prueba.main(new String[]{""});
     }//GEN-LAST:event_menuResultadoActionPerformed
+
+    private void menuRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRutaActionPerformed
+        // TODO add your handling code here:
+        ruta.leerArchivo(this, sesion, tabla);
+    }//GEN-LAST:event_menuRutaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -292,6 +310,7 @@ public class IGPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuJoystick;
     private javax.swing.JMenuItem menuLimpiar;
     private javax.swing.JMenuItem menuResultado;
+    private javax.swing.JMenuItem menuRuta;
     private javax.swing.JMenuItem menuSalir;
     private javax.swing.JMenuItem menuVer;
     private javax.swing.JPanel pie;
